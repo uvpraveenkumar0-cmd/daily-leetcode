@@ -7,8 +7,8 @@ class Solution {
         {
            a+=nums[i];
         }
-        int b = (n*(n+1)/2-a);
-        return b;
+        // int b = (n*(n+1)/2-a);
+        return (n*(n+1)/2-a);
 
     }
 }
