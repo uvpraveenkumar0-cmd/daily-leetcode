@@ -22,7 +22,7 @@ class Solution {
         Set<Integer> set = new HashSet<>();
         
         for (int num : nums) {
-            // .add() returns false if the element is already present in the set
+            
             if (!set.add(num)) {
                 return true; // Duplicate found
             }
