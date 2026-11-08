@@ -5,18 +5,18 @@ class Solution {
         }
         
         int count = 0;
-        long product = 1;
-        int left = 0;
         
-        for (int right = 0; right < nums.length; right++) {
-            product *= nums[right];
-            
-            while (product >= k) {
-                product /= nums[left];
-                left++;
+        for (int i = 0; i < nums.length; i++) {
+            long product = 1;
+            for (int j = i; j < nums.length; j++) {
+                product *= nums[j];
+                
+                if (product < k) {
+                    count++;
+                } else {
+                    break; // Product is >= k, further elements will only increase it
+                }
             }
-            
-            count += (right - left + 1);
         }
         
         return count;
