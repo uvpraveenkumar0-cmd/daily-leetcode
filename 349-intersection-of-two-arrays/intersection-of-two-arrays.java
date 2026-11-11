@@ -31,29 +31,31 @@ import java.util.Arrays;
 
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        // Step 1: Sort both arrays
         Arrays.sort(nums1);
         Arrays.sort(nums2);
         
-        int i = 0, j = 0;
+        int left= 0, right = 0;
         int n1 = nums1.length, n2 = nums2.length;
-        
-        // Use a temporary array to store results without duplicates
         int[] temp = new int[Math.min(n1, n2)];
         int index = 0;
         
-        while (i < n1 && j < n2) {
-            if (nums1[i] < nums2[j]) {
-                i++;
-            } else if (nums1[i] > nums2[j]) {
-                j++;
-            } else {
+        while (left < n1 && right < n2) {
+            if (nums1[left] < nums2[right])
+             {
+                left++;
+            } 
+            else if (nums1[left] > nums2[right])
+             {
+                right++;
+            }
+             else {
                 // Found a match; insert only if it's not a duplicate
-                if (index == 0 || temp[index - 1] != nums1[i]) {
-                    temp[index++] = nums1[i];
+                if (index == 0 || temp[index - 1] != nums1[left]) {
+                    temp[index] = nums1[left];
+                    index++;
                 }
-                i++;
-                j++;
+                left++;
+                right++;
             }
         }
         
