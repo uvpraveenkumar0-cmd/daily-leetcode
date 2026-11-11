@@ -1,23 +1,26 @@
 class Solution {
     public int maxVowels(String s, int k) {
-        char[] chars = s.toCharArray();
         int currentVowels = 0;
-
-        // First window
         for (int i = 0; i < k; i++) {
-            if (isVowel(chars[i])) {
+            if (isVowel(s.charAt(i))) {
                 currentVowels++;
             }
         }
 
         int maxVowels = currentVowels;
-
-        // Slide window
-        for (int i = k; i < chars.length; i++) {
+        for (int i = k; i < s.length(); i++)
+         {
+    
             if (maxVowels == k) return k;
 
-            if (isVowel(chars[i])) currentVowels++;
-            if (isVowel(chars[i - k])) currentVowels--;
+            if (isVowel(s.charAt(i))) 
+            {
+                currentVowels++;
+            }
+            if (isVowel(s.charAt(i - k)))
+             {
+                currentVowels--;
+            }
 
             maxVowels = Math.max(maxVowels, currentVowels);
         }
